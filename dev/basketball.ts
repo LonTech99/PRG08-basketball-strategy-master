@@ -6,6 +6,60 @@ class BasketBall extends Ball{
     }
 
     public update():void {
+        this.draw()
+
+        if(this.x > window.innerWidth / 2) {
+            this.moon()
+        }
+        else {
+            this.earth()
+        }
+
+        this.earth()
+        this.moon()
+    }
+
+    public earth() : void {
+        if (this.x < this.minWidth)
+        {
+            this.x = this.minWidth
+            this.speedX *= -1
+            this.speedX *= this.friction
+        }
+        if(this.x > this.maxWidth) {
+            this.x = this.maxWidth
+            this.speedX *= -1
+            this.speedX *= this.friction
+        }
+        if (this.y + this.speedY > this.maxHeight)
+        {
+            this.y = this.maxHeight;
+            this.speedY *= -1
+            // Weerstand
+            this.speedY *= this.friction
+            this.speedX *= this.friction
+        }
+        else {
+            this.speedY += this.gravity
+        }
+
+        this.x += this.speedX
+        this.y += this.speedY
+    }
+
+    public moon () {
+        this.x += this.speedX
+        this.y += this.speedY
+        
+        if (this.x < this.minWidth || this.x > this.maxWidth)
+        {
+            this.speedX *= -1
+            
+        }
+        if (this.y < 0 || this.y > this.maxHeight)
+        {
+            this.speedY *= -1
+        }
     }
 
    
