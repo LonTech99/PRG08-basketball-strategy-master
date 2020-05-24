@@ -1,24 +1,10 @@
 class MoonBall extends Ball {
-    constructor(minWidth : number, maxWidth : number) {
-        super(minWidth, maxWidth)
-    }
 
-    public update() : void {
-        this.x += this.speedX
-        this.y += this.speedY
+    constructor(minWidth : number, maxWidth : number, behavior : BallBehavior) {
         
-        if (this.x < this.minWidth || this.x > this.maxWidth)
-        {
-            this.speedX *= -1
-            
-        }
-        if (this.y < 0 || this.y > this.maxHeight)
-        {
-            this.speedY *= -1
-        }
-
-        this.draw()
+        super(minWidth, maxWidth, behavior)
     }
+
 }
 
 window.customElements.define("moonball-component", MoonBall as any)
